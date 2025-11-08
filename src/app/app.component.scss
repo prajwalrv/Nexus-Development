@@ -1,0 +1,88 @@
+// App component styles - enhanced for smooth animations
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; // Prevent horizontal scrollbar during animations
+  overflow-y: auto; // Only show vertical scrollbar when needed
+}
+
+// Content visibility control with enhanced transitions
+.content-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity, filter;
+}
+
+// Hidden state for smooth entrance
+.content-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(4px);
+}
+
+// Main content area with enhanced styling
+.main-content {
+  position: relative;
+  z-index: 1;
+  
+  // Smooth scrolling for better UX
+  scroll-behavior: smooth;
+  
+  // View transition animations (for modern browsers)
+  @supports (view-transition-name: none) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.5s;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+}
+
+// Enhanced loader transition
+.premium-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 0.3s ease;
+  
+  &.loaded {
+    backdrop-filter: blur(10px);
+  }
+}
+
+// Reduce motion for accessibility
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .content-visible {
+    transition: opacity 0.2s ease;
+    transform: none;
+    filter: none;
+  }
+}
+
+// Performance optimizations
+* {
+  // Enable hardware acceleration for better performance
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+// Enhanced focus management for accessibility
+:focus-visible {
+  outline: 2px solid #9EFF00;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

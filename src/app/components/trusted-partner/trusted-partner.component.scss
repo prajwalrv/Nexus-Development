@@ -1,0 +1,239 @@
+// Color Variables
+$color-green-99: #FDFFFA;
+$color-grey-10: #1A1A1A;
+$color-grey-15: #262626;
+$color-container-bg: rgba(36, 36, 36, 0.2);
+
+// Trusted Partner Container
+.trusted-partner-container {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  padding: 50px 0 30px; // Increased top padding for badge space
+  margin-top: 0; // Remove margin-top
+  background: $color-container-bg;
+  border-bottom: 1px solid $color-grey-15;
+  border-top: 1px solid $color-grey-15;
+  z-index: 1; // Lower z-index to stay below hero section
+  isolation: isolate; // Create new stacking context
+
+  @media (max-width: 768px) {
+    padding: 24px 16px;
+    gap: 16px;
+  }
+
+  // Trusted Partner Badge (positioned absolutely)
+  .trusted-badge {
+    position: absolute;
+    top: 15px; // Positioned inside the container instead of overlapping
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; // Lower z-index to stay below hero section buttons
+    background: $color-grey-10;
+    border: 1px solid $color-grey-15;
+    border-radius: 100px;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @media (max-width: 768px) {
+      top: 12px;
+      padding: 12px 20px;
+    }
+
+    @media (max-width: 480px) {
+      top: 10px;
+      padding: 10px 18px;
+    }
+
+    .badge-text {
+      font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.2;
+      text-align: center;
+      color: $color-green-99;
+      white-space: nowrap;
+      margin: 0;
+
+      @media (max-width: 480px) {
+        font-size: 13px;
+      }
+    }
+  }
+
+  // Clients Display Container
+  .clients-display {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    padding: 35px 30px 16px; // Added top padding to account for badge
+
+    @media (max-width: 768px) {
+      padding: 16px 24px;
+      gap: 40px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 16px 20px;
+      gap: 30px;
+      flex-direction: column;
+    }
+
+    // Individual Client Card
+    .client-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+      min-width: 200px;
+
+      @media (max-width: 480px) {
+        flex-direction: column;
+        width: auto;
+        gap: 12px;
+        text-align: center;
+      }
+
+      // Dynamic Logo Container
+      .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        min-width: 45px;
+        min-height: 45px;
+        transition: all 0.3s ease;
+
+        .logo-image {
+          width: 44.76px;
+          height: 45px;
+          object-fit: contain;
+          display: block;
+          transition: all 0.3s ease;
+
+          @media (max-width: 480px) {
+            width: 36px;
+            height: 36px;
+          }
+        }
+        
+        .svg-logo {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 45px;
+          height: 45px;
+          transition: all 0.3s ease;
+          
+          // Global SVG styles
+          svg {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: block;
+          }
+          
+          // Deep selector for Angular
+          :deep(svg) {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: block;
+          }
+
+          @media (max-width: 480px) {
+            width: 36px;
+            height: 36px;
+            
+            svg {
+              width: 32px;
+              height: 32px;
+            }
+            
+            :deep(svg) {
+              width: 32px;
+              height: 32px;
+            }
+          }
+        }
+      }
+
+      // Company Name Container
+      .company-name-container {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+
+        @media (max-width: 480px) {
+          justify-content: center;
+        }
+
+        .company-name {
+          font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-weight: 500;
+          font-size: 21px;
+          line-height: 1.2;
+          color: $color-green-99;
+          margin: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          @media (max-width: 768px) {
+            font-size: 19px;
+          }
+
+          @media (max-width: 480px) {
+            font-size: 17px;
+            white-space: normal;
+            text-align: center;
+            overflow: visible;
+            text-overflow: initial;
+          }
+
+          // Handle responsive text wrapping for smaller screens
+          @media (max-width: 320px) {
+            font-size: 15px;
+            word-break: break-word;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Focus states for accessibility
+.trusted-badge:focus-within,
+.partner-card:focus-within {
+  outline: 2px solid $color-green-99;
+  outline-offset: 2px;
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .trusted-partner-container {
+    border-color: $color-green-99;
+    
+    .trusted-badge {
+      border-color: $color-green-99;
+      background: $color-grey-15;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .trusted-badge {
+    transform: translateX(-50%);
+    transition: none;
+  }
+}

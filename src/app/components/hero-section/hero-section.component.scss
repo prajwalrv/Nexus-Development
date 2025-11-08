@@ -1,0 +1,513 @@
+// Color Variables
+$color-green: #9EFF00;
+$color-neon-green: #AFFF00;
+$color-white: #FFFFFF;
+$color-grey-60: #98989A;
+$color-grey-20: #333333;
+$color-grey-15: #262626;
+$color-grey-10: #1A1A1A;
+
+// 3D Rotating Cube Styles
+.cube-container {
+  perspective: 1200px;
+  margin-bottom: -05px; // Maintain overlap with headline
+  margin-top: -35px; // Move cube significantly higher on desktop
+  position: relative;
+  z-index: 25; // Higher z-index to ensure cube appears above headline
+  
+  @media (max-width: 1024px) {
+    margin-bottom: -30px; // Maintain overlap
+    margin-top: -35px; // Higher on large tablet
+  }
+  
+  @media (max-width: 768px) {
+    margin-bottom: -25px; // Maintain overlap
+    margin-top: -28px; // Higher on tablet
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 60px; // Maintain overlap
+    margin-top: -32px; // Even higher on mobile
+  }
+
+  .cube-wrapper {
+    width: 135px; // Increased from 120px
+    height: 135px; // Increased from 120px
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateCube 12s infinite linear;
+
+    @keyframes rotateCube {
+      0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+      }
+      100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+      }
+    }
+
+    .cube {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      
+      .cube-face {
+        position: absolute;
+        width: 135px; // Increased from 120px
+        height: 135px; // Increased from 120px
+        background: rgba(26, 26, 26, 0.9);
+        border: 2px solid $color-neon-green;
+        box-shadow: 
+          0 0 18px rgba(175, 255, 0, 0.6), // Adjusted for larger size
+          inset 0 0 18px rgba(175, 255, 0, 0.3), // Adjusted for larger size
+          0 0 36px rgba(175, 255, 0, 0.4); // Adjusted for larger size
+        
+        @media (max-width: 768px) {
+          box-shadow: 
+            0 0 16px rgba(175, 255, 0, 0.55), // Adjusted for larger cube
+            inset 0 0 18px rgba(175, 255, 0, 0.3),
+            0 0 32px rgba(175, 255, 0, 0.35); // Proportional glow for larger cube
+        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        overflow: hidden;
+
+        // Glow effect on edges
+        &::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at center, transparent 40%, rgba(175, 255, 0, 0.2) 100%);
+          pointer-events: none;
+        }
+
+        .offer-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 16px;
+          text-align: center;
+          position: relative;
+          z-index: 2;
+
+          .offer-title {
+            font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.2;
+            color: $color-neon-green;
+            text-shadow: 0 0 10px rgba(175, 255, 0, 0.8);
+            letter-spacing: 0.5px;
+          }
+
+          .offer-subtitle {
+            font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 1.2;
+            color: $color-white;
+            opacity: 0.9;
+          }
+        }
+
+        // Position each face in 3D space
+        &.front {
+          transform: translateZ(67.5px); // Adjusted for 135px cube
+        }
+        &.back {
+          transform: rotateY(180deg) translateZ(67.5px);
+        }
+        &.right {
+          transform: rotateY(90deg) translateZ(67.5px);
+        }
+        &.left {
+          transform: rotateY(-90deg) translateZ(67.5px);
+        }
+        &.top {
+          transform: rotateX(90deg) translateZ(67.5px);
+        }
+        &.bottom {
+          transform: rotateX(-90deg) translateZ(67.5px);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cube-wrapper {
+      width: 110px; // Slightly larger for tablet
+      height: 110px;
+
+      .cube .cube-face {
+        width: 110px;
+        height: 110px;
+
+        &.front { transform: translateZ(55px); }
+        &.back { transform: rotateY(180deg) translateZ(55px); }
+        &.right { transform: rotateY(90deg) translateZ(55px); }
+        &.left { transform: rotateY(-90deg) translateZ(55px); }
+        &.top { transform: rotateX(90deg) translateZ(55px); }
+        &.bottom { transform: rotateX(-90deg) translateZ(55px); }
+
+        .offer-content {
+          .offer-title {
+            font-size: 16px;
+          }
+          .offer-subtitle {
+            font-size: 11px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cube-wrapper {
+      width: 90px; // Slightly larger for mobile
+      height: 90px;
+
+      .cube .cube-face {
+        width: 90px;
+        height: 90px;
+
+        &.front { transform: translateZ(45px); }
+        &.back { transform: rotateY(180deg) translateZ(45px); }
+        &.right { transform: rotateY(90deg) translateZ(45px); }
+        &.left { transform: rotateY(-90deg) translateZ(45px); }
+        &.top { transform: rotateX(90deg) translateZ(45px); }
+        &.bottom { transform: rotateX(-90deg) translateZ(45px); }
+
+        .offer-content {
+          gap: 6px;
+          padding: 10px; // Adjusted for 90px cube
+
+          .offer-title {
+            font-size: 13px; // Adjusted for 90px cube
+          }
+          .offer-subtitle {
+            font-size: 9px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Background with tiled pattern
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; // Fixed height to fit viewport
+  max-height: 100vh; // Prevent overflow
+  background: $color-grey-10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0 40px; // Balanced padding for all devices
+  overflow: hidden; // Prevent content overflow
+  box-sizing: border-box;
+  z-index: 10; // Ensure hero section is above other sections
+
+  // Main container
+  .hero-container {
+    position: relative;
+    z-index: 20; // Higher z-index for content
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; // Optimized gap for balanced spacing
+    padding: 0 24px;
+    margin-top: 0; // Removed top margin to reduce empty space
+
+    // Sub container for heading and segmented text
+    .hero-sub-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-self: stretch;
+      gap: 24px; // Balanced spacing for desktop
+      
+      @media (max-width: 1024px) {
+        gap: 20px; // Balanced on large tablet
+      }
+      
+      @media (max-width: 768px) {
+        gap: 18px; // Optimized for tablet
+      }
+      
+      @media (max-width: 480px) {
+        gap: 14px; // Compact but readable on mobile
+      }
+
+      // Main heading
+      .hero-heading {
+        font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 1.2;
+        text-align: center;
+        color: $color-white;
+        margin: 0;
+        max-width: 100%;
+        position: relative;
+        z-index: 15; // Below cube but above background
+        padding-top: 20px; // Space for cube overlap
+
+        @media (max-width: 1024px) {
+          font-size: 42px;
+          line-height: 1.25;
+          padding-top: 18px;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 36px;
+          line-height: 1.3;
+          padding-top: 16px;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 28px;
+          line-height: 1.3;
+          padding-top: 12px;
+        }
+      }
+
+      // Segmented text container with glassmorphism effect
+      .segmented-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 18px 30px;
+        background: rgba(36, 36, 36, 0.2);
+        border: 1px solid $color-grey-15;
+        border-radius: 8px;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        @media (max-width: 640px) {
+          padding: 14px 20px;
+          gap: 4px;
+        }
+
+        @media (max-width: 480px) {
+          padding: 12px 18px; // More compact on mobile
+        }
+
+        // Regular segmented text
+        .segmented-text {
+          font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 1.2;
+          color: $color-grey-60;
+
+          @media (max-width: 480px) {
+            font-size: 16px;
+          }
+        }
+
+        // Highlighted segmented text
+        .segmented-text-highlighted {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          padding: 8px 10px;
+          background: $color-grey-15;
+          border-radius: 6px;
+          font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 1.2;
+          color: $color-white;
+          white-space: nowrap;
+
+          @media (max-width: 480px) {
+            font-size: 16px;
+            padding: 6px 8px;
+          }
+        }
+      }
+    }
+
+  // Buttons container
+    .buttons-container {
+      display: flex;
+      gap: 13px;
+      align-items: center;
+      position: relative;
+      z-index: 30; // Highest z-index for buttons
+      margin-bottom: 0; // No bottom margin
+      margin-top: 8px; // Consistent spacing from category tags
+
+      @media (max-width: 1024px) {
+        margin-top: 12px; // Balanced spacing on large tablet
+      }
+
+      @media (max-width: 768px) {
+        margin-top: 16px; // Increased separation on tablet
+        gap: 12px;
+      }
+
+      @media (max-width: 480px) {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        margin-top: 20px; // Adequate separation on mobile
+        max-width: 300px; // Limit width for better proportion
+      }
+    }
+  }
+
+  // Button styles
+  .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    white-space: nowrap;
+
+    @media (max-width: 480px) {
+      width: 100%;
+      max-width: 280px;
+      padding: 14px 20px; // Slightly reduced for tighter layout
+    }
+
+    &:focus {
+      outline: 2px solid $color-green;
+      outline-offset: 2px;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    // Secondary button (Our Works)
+    &.btn-secondary {
+      background: rgba(36, 36, 36, 0.2);
+      border: 1px solid $color-grey-20;
+      color: $color-white;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      &:hover:not(:disabled) {
+        background: rgba(36, 36, 36, 0.4);
+        border-color: $color-grey-15;
+        transform: translateY(-1px);
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(0);
+      }
+    }
+
+    // Primary button (Contact Us)
+    &.btn-primary {
+      background: $color-green;
+      color: $color-grey-15;
+
+      &:hover:not(:disabled) {
+        background: color-mix(in srgb, $color-green 90%, white 10%);
+        transform: translateY(-1px);
+      }
+
+      &:active:not(:disabled) {
+        background: color-mix(in srgb, $color-green 90%, black 10%);
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // Abstract design background
+  .abstract-design {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1; // Keep background behind content
+    pointer-events: none;
+    overflow: hidden;
+
+    .abstract-image {
+      position: absolute;
+      left: 50%;
+      top: 60%; // Move down from 50% to 60% for better positioning
+      transform: translate(-50%, -50%) scale(1.3); // Make 30% bigger
+      width: 100%;
+      max-width: 1600px; // Increase max-width for larger asset
+      height: auto;
+      opacity: 0.8;
+      transition: transform 0.3s ease; // Smooth scaling transition
+
+      @media (max-width: 1600px) {
+        width: 1600px; // Increase base width
+      }
+      
+      @media (max-width: 1280px) {
+        transform: translate(-50%, -50%) scale(1.2); // Slightly smaller scale on tablets
+        max-width: 1400px;
+      }
+      
+      @media (max-width: 768px) {
+        transform: translate(-50%, -50%) scale(1.1); // Even smaller on mobile
+        max-width: 1200px;
+        top: 65%; // Move slightly more down on mobile
+      }
+    }
+  }
+}
+
+// Additional responsive adjustments
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: 75px 0 35px; // Optimized for large tablet
+    
+    .hero-container {
+      gap: 28px; // Balanced spacing
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 65px 0 25px; // Optimized for tablet
+    justify-content: center; // Center content for better balance
+
+    .hero-container {
+      gap: 26px; // Balanced spacing between sections
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 55px 0 20px; // Balanced padding for mobile
+    justify-content: center; // Center for better visual balance
+
+    .hero-container {
+      gap: 22px; // Adequate spacing between content groups
+      padding: 0 16px;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+<footer class="footer-section">
+  <!-- Top Container -->
+  <div class="footer-top-container">
+    <!-- Logo -->
+    <div class="footer-logo">
+      <div class="logo-icon">
+        <img src="assets/logo.svg" alt="Nexus Development Logo" />
+      </div>
+      <div class="logo-text">
+        <div class="logo-title">NEXUS</div>
+        <div class="logo-subtitle">Development</div>
+      </div>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="footer-nav">
+      <a *ngFor="let link of navLinks" [routerLink]="link.route" class="nav-link">{{ link.label }}</a>
+    </nav>
+
+    <!-- Stay Connected Box -->
+    <div class="stay-connected-box">
+      <span class="stay-connected-label">Stay Connected</span>
+      <div class="social-icons">
+        <a href="#" class="social-icon" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 14.9912 3.65684 19.1283 8.4375 19.8785V12.8906H5.89844V10H8.4375V7.79688C8.4375 5.29063 9.93047 3.90625 12.2146 3.90625C13.3084 3.90625 14.4531 4.10156 14.4531 4.10156V6.5625H13.1922C11.95 6.5625 11.5625 7.3334 11.5625 8.125V10H14.3359L13.8926 12.8906H11.5625V19.8785C16.3432 19.1283 20 14.9912 20 10Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="Twitter">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M6.2896 18.125C13.8368 18.125 17.9648 11.8724 17.9648 6.45155C17.9648 6.27577 17.9648 6.10077 17.9528 5.92655C18.7559 5.3399 19.4491 4.61927 20 3.79608C19.2512 4.12883 18.4567 4.34615 17.6432 4.44061C18.4998 3.92742 19.141 3.12123 19.4472 2.17139C18.6417 2.6488 17.7605 2.98545 16.8416 3.16764C16.2229 2.50981 15.4047 2.07318 14.5135 1.92829C13.6223 1.78341 12.7078 1.93868 11.9116 2.3697C11.1154 2.80071 10.4819 3.48787 10.1075 4.32067C9.73313 5.15347 9.63827 6.08528 9.8392 6.97452C8.21481 6.89396 6.62282 6.47466 5.16471 5.74297C3.7066 5.01128 2.41543 3.98289 1.3696 2.72374C0.870333 3.60431 0.710047 4.64543 0.920963 5.64095C1.13188 6.63648 1.69824 7.51797 2.5128 8.10061C1.85769 8.08124 1.21741 7.90508 0.64 7.58686V7.63921C0.640313 8.5943 0.963503 9.52055 1.55904 10.2672C2.15457 11.0138 2.98785 11.5355 3.9176 11.7451C3.30993 11.9255 2.67041 11.9491 2.0528 11.8139C2.30311 12.6282 2.79993 13.3443 3.47424 13.8646C4.14855 14.3849 4.96679 14.6826 5.8128 14.7161C4.37146 15.8487 2.60036 16.4664 0.7792 16.4639C0.518857 16.4639 0.258643 16.4482 0 16.4171C1.84813 17.6096 4.00063 18.2455 6.2896 18.2422" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M18.5195 0H1.47656C0.660156 0 0 0.644531 0 1.44141V18.5547C0 19.3516 0.660156 20 1.47656 20H18.5195C19.3359 20 20 19.3516 20 18.5586V1.44141C20 0.644531 19.3359 0 18.5195 0ZM5.93359 17.043H2.96484V7.49609H5.93359V17.043ZM4.44922 6.19531C3.49609 6.19531 2.72656 5.42578 2.72656 4.47656C2.72656 3.52734 3.49609 2.75781 4.44922 2.75781C5.39844 2.75781 6.16797 3.52734 6.16797 4.47656C6.16797 5.42188 5.39844 6.19531 4.44922 6.19531ZM17.043 17.043H14.0781V12.4023C14.0781 11.2969 14.0586 9.87109 12.5352 9.87109C10.9922 9.87109 10.7578 11.0781 10.7578 12.3242V17.043H7.79688V7.49609H10.6406V8.80078H10.6797C11.0742 8.05078 12.043 7.25781 13.4844 7.25781C16.4883 7.25781 17.043 9.23438 17.043 11.8047V17.043Z" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider Line -->
+  <div class="footer-divider"></div>
+
+  <!-- Bottom Container -->
+  <div class="footer-bottom-container">
+    <!-- Contact Info -->
+    <div class="contact-info-container">
+      <!-- Email -->
+      <div class="contact-item">
+        <svg class="contact-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M1.25 6.875L8.68359 11.5898C9.4668 12.0703 10.5332 12.0703 11.3164 11.5898L18.75 6.875M3.75 16.25H16.25C17.2855 16.25 18.125 15.4105 18.125 14.375V5.625C18.125 4.58947 17.2855 3.75 16.25 3.75H3.75C2.71447 3.75 1.875 4.58947 1.875 5.625V14.375C1.875 15.4105 2.71447 16.25 3.75 16.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="contact-text">instantdeliverables&#64;gmail.com</span>
+      </div>
+
+      <!-- Phone -->
+      <div class="contact-item">
+        <svg class="contact-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M1.25 3.75C1.25 10.9937 7.00632 17.5 14.25 17.5H16.25C16.9404 17.5 17.5 16.9404 17.5 16.25V14.5853C17.5 14.0629 17.1681 13.5997 16.6687 13.4341L13.6687 12.3091C13.2582 12.1709 12.8052 12.2917 12.5109 12.6219L11.7141 13.5234C11.3601 13.9219 10.7696 14.0412 10.2845 13.7989C8.47754 12.8946 6.85547 11.2725 5.95117 9.46549C5.70887 8.98042 5.82812 8.38989 6.22656 8.03591L7.12812 7.23909C7.45825 6.94478 7.57909 6.49182 7.44092 6.08135L6.31592 3.08135C6.15027 2.58193 5.68707 2.25 5.16465 2.25H3.5C2.80964 2.25 2.25 2.80964 2.25 3.5V3.75H1.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="contact-text">+91 95912 88554</span>
+      </div>
+
+      <!-- Address -->
+      <div class="contact-item">
+        <svg class="contact-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M16.875 8.4375C16.875 13.125 10 18.125 10 18.125C10 18.125 3.125 13.125 3.125 8.4375C3.125 6.61658 3.84933 4.87026 5.13864 3.58114C6.42795 2.29183 8.17429 1.5675 10 1.5675C11.8257 1.5675 13.572 2.29183 14.8614 3.58114C16.1507 4.87026 16.875 6.61658 16.875 8.4375Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 10.625C11.2071 10.625 12.1875 9.64462 12.1875 8.4375C12.1875 7.23038 11.2071 6.25 10 6.25C8.79289 6.25 7.8125 7.23038 7.8125 8.4375C7.8125 9.64462 8.79289 10.625 10 10.625Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="contact-text">IT HUB, Bangalore,India</span>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="copyright-text">© 2025 Nexus Development. All rights reserved.</div>
+  </div>
+</footer>

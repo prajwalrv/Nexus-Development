@@ -1,0 +1,518 @@
+// Spacing unit for consistent layout
+:root {
+  --spacing-unit: 8px;
+}
+
+.premium-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.loaded {
+    pointer-events: none;
+  }
+
+  // Background layers
+  .loader-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+
+    .bg-gradient {
+      position: absolute;
+      inset: -50%;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(158, 255, 0, 0.15) 0%,
+        rgba(158, 255, 0, 0.05) 30%,
+        transparent 70%
+      );
+      animation: gradientRotate 20s linear infinite;
+    }
+
+    .bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: patternMove 30s linear infinite;
+    }
+  }
+
+  // Main content container
+  .loader-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 6);
+  }
+
+  // Logo animation
+  .loader-logo {
+    text-align: center;
+    perspective: 1000px;
+
+    .logo-container {
+      display: flex;
+      gap: calc(var(--spacing-unit) * 2);
+      justify-content: center;
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+
+    .logo-letter {
+      font-size: 120px;
+      font-weight: 300;
+      color: #fff;
+      display: inline-block;
+      transform-style: preserve-3d;
+      background: linear-gradient(135deg, #9EFF00, #7ACC00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 40px rgba(158, 255, 0, 0.5);
+      letter-spacing: -0.02em;
+
+      &.letter-n {
+        animation: letterGlow 2s ease-in-out infinite alternate;
+      }
+
+      &.letter-x {
+        animation: letterGlow 2s ease-in-out infinite alternate-reverse;
+        animation-delay: 0.5s;
+      }
+    }
+
+    .logo-tagline {
+      display: flex;
+      gap: calc(var(--spacing-unit) * 2);
+      justify-content: center;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.5s forwards;
+
+      .tagline-word {
+        font-size: 14px;
+        font-weight: 200;
+        letter-spacing: 0.3em;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  // Progress container
+  .progress-container {
+    width: 300px;
+    position: relative;
+
+    .progress-bar {
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #9EFF00, #7ACC00);
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        box-shadow: 0 0 20px rgba(158, 255, 0, 0.5);
+      }
+
+      .progress-glow {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 20px;
+        background: radial-gradient(ellipse, rgba(158, 255, 0, 0.8), transparent);
+        filter: blur(10px);
+        animation: glowPulse 1s ease-in-out infinite;
+      }
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      margin-top: calc(var(--spacing-unit) * 2);
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+
+      .progress-number {
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.7);
+        font-feature-settings: 'tnum';
+      }
+
+      .progress-label {
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+    }
+  }
+
+  // Text carousel
+  .loader-text {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+
+    .text-carousel {
+      position: relative;
+      width: 400px;
+      text-align: center;
+    }
+
+    .carousel-item {
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.05em;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Floating orbs
+  .floating-orbs {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    .orb {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at 30% 30%,
+        rgba(158, 255, 0, 0.3),
+        rgba(158, 255, 0, 0.1),
+        transparent
+      );
+      filter: blur(20px);
+
+      &:nth-child(1) {
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      &:nth-child(2) {
+        top: 20%;
+        right: 15%;
+        animation-delay: 0.5s;
+      }
+
+      &:nth-child(3) {
+        bottom: 25%;
+        left: 20%;
+        animation-delay: 1s;
+      }
+
+      &:nth-child(4) {
+        bottom: 15%;
+        right: 10%;
+        animation-delay: 1.5s;
+      }
+
+      &:nth-child(5) {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation-delay: 2s;
+      }
+    }
+  }
+
+  // Corner details
+  .corner-details {
+    position: absolute;
+    inset: 20px;
+    pointer-events: none;
+
+    .corner {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+
+      &.top-left {
+        top: 0;
+        left: 0;
+      }
+
+      &.top-right {
+        top: 0;
+        right: 0;
+      }
+
+      &.bottom-left {
+        bottom: 0;
+        left: 0;
+      }
+
+      &.bottom-right {
+        bottom: 0;
+        right: 0;
+      }
+
+      .corner-line {
+        position: absolute;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(158, 255, 0, 0.5),
+          transparent
+        );
+        transform-origin: left center;
+
+        &.horizontal {
+          width: 100%;
+          height: 1px;
+          top: 0;
+          left: 0;
+          transform: scaleX(0);
+        }
+
+        &.vertical {
+          width: 1px;
+          height: 100%;
+          top: 0;
+          left: 0;
+          transform: scaleY(0);
+          background: linear-gradient(
+            to bottom,
+            transparent,
+            rgba(158, 255, 0, 0.5),
+            transparent
+          );
+        }
+      }
+
+      &.top-right .corner-line.horizontal {
+        transform-origin: right center;
+        left: auto;
+        right: 0;
+        // Mirror left corner: gradient should flow inward from the right
+        background: linear-gradient(
+          to left,
+          transparent,
+          rgba(158, 255, 0, 0.5),
+          transparent
+        );
+      }
+
+      // Ensure the vertical line for the top-right corner grows and anchors from the right edge
+      &.top-right .corner-line.vertical {
+        left: auto;
+        right: 0;
+        transform-origin: right top;
+      }
+
+      &.bottom-left .corner-line {
+        top: auto;
+        bottom: 0;
+        
+        &.vertical {
+          transform-origin: left bottom;
+          // For bottom corners, gradient should rise upward
+          background: linear-gradient(
+            to top,
+            transparent,
+            rgba(158, 255, 0, 0.5),
+            transparent
+          );
+        }
+      }
+
+      &.bottom-right .corner-line {
+        top: auto;
+        bottom: 0;
+        left: auto;
+        right: 0;
+
+        &.horizontal {
+          transform-origin: right center;
+          // Mirror left bottom horizontal: flow inward from right
+          background: linear-gradient(
+            to left,
+            transparent,
+            rgba(158, 255, 0, 0.5),
+            transparent
+          );
+        }
+
+        &.vertical {
+          transform-origin: right bottom;
+          // Flow upward for bottom corner
+          background: linear-gradient(
+            to top,
+            transparent,
+            rgba(158, 255, 0, 0.5),
+            transparent
+          );
+        }
+      }
+    }
+  }
+
+  // Sound wave animation
+  .sound-wave {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    height: 30px;
+
+    .wave-bar {
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(
+        to top,
+        rgba(158, 255, 0, 0.2),
+        rgba(158, 255, 0, 0.6)
+      );
+      border-radius: 2px;
+      transform-origin: center;
+    }
+  }
+}
+
+// Animations
+@keyframes gradientRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes patternMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+@keyframes letterGlow {
+  0% {
+    text-shadow: 
+      0 0 40px rgba(158, 255, 0, 0.5),
+      0 0 60px rgba(158, 255, 0, 0.3);
+  }
+  100% {
+    text-shadow: 
+      0 0 60px rgba(158, 255, 0, 0.8),
+      0 0 80px rgba(158, 255, 0, 0.5);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .premium-loader {
+    .loader-logo {
+      .logo-letter {
+        font-size: 80px;
+      }
+
+      .logo-tagline {
+        flex-direction: column;
+        gap: calc(var(--spacing-unit));
+
+        .tagline-word {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .progress-container {
+      width: 250px;
+    }
+
+    .loader-text {
+      .text-carousel {
+        width: 300px;
+      }
+
+      .carousel-item {
+        font-size: 16px;
+      }
+    }
+
+    .corner-details {
+      inset: 10px;
+
+      .corner {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .premium-loader {
+    .loader-logo {
+      .logo-letter {
+        font-size: 60px;
+      }
+    }
+
+    .loader-text {
+      .carousel-item {
+        font-size: 14px;
+      }
+    }
+  }
+}

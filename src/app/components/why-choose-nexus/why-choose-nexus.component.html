@@ -1,0 +1,76 @@
+<section class="why-choose-nexus">
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-content">
+      <div class="badge">Why Choose Us</div>
+      <h2 class="main-heading">Nexus Development</h2>
+      <p class="main-description">
+        Experience excellence in digital craftsmanship with our team of skilled professionals dedicated to delivering exceptional results.
+      </p>
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-number">2+</span>
+          <span class="stat-label">Projects Delivered</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">98%</span>
+          <span class="stat-label">Client Satisfaction</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">1</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Grid -->
+  <div class="features-section">
+    <div class="features-grid">
+      <div class="feature-card" *ngFor="let feature of allFeatures; let i = index" [attr.data-index]="i">
+        <div class="card-inner">
+          <div class="icon-wrapper">
+            <div class="icon-bg"></div>
+            <img [src]="feature.iconPath" [alt]="feature.title + ' icon'" class="feature-icon">
+          </div>
+          <div class="card-content">
+            <h3 class="feature-title">{{ feature.title }}</h3>
+            <p class="feature-description">{{ feature.description }}</p>
+            <div class="feature-highlights">
+              <span class="highlight" *ngFor="let highlight of feature.highlights">{{ highlight }}</span>
+            </div>
+          </div>
+          <div class="card-hover-effect"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Central Connection Element -->
+    <div class="central-element">
+      <div class="central-circle">
+        <div class="pulse-ring"></div>
+        <div class="nexus-logo">
+          <span>N</span>
+        </div>
+      </div>
+      <div class="connection-lines">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+        <div class="line line-4"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="cta-section">
+    <h3 class="cta-heading">Ready to Transform Your Digital Presence?</h3>
+    <p class="cta-description">Let's discuss how we can help bring your vision to life.</p>
+    <button class="cta-button" (click)="onStartYourProjectClick()">
+      <span>Start Your Project</span>
+      <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12h14m-7-7 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+</section>

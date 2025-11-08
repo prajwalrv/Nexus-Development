@@ -1,0 +1,116 @@
+<section class="faq-section">
+  <!-- Hero Area -->
+  <div class="text-container">
+    <h2 class="title">Frequently Asked Questions</h2>
+    <p class="subtitle">
+      Still you have any questions? Contact our Team via
+      instantdeliverablessolution&#64;gmail.com
+    </p>
+  </div>
+
+  <!-- FAQ Grid Container -->
+  <div class="faq-container">
+    <!-- Left Column (Items 01-04) -->
+    <div class="items-container left-column">
+      <div class="line-separator"></div>
+      
+      <!-- Dynamic FAQ Items for Left Column -->
+      <ng-container *ngFor="let faq of leftColumnFaqs; let i = index; trackBy: trackByFaqId">
+        <div class="faq-item" 
+             [class.expanded]="isFaqExpanded(faq.index)"
+             [attr.aria-expanded]="isFaqExpanded(faq.index)"
+             role="button"
+             tabindex="0">
+          
+          <div class="number-container" [class.active]="isFaqExpanded(faq.index)">
+            <span class="number">{{ faq.displayNumber }}</span>
+          </div>
+          
+          <div class="content-container">
+            <!-- Collapsed state -->
+            <ng-container *ngIf="!isFaqExpanded(faq.index)">
+              <h3 class="question" (click)="toggleFaq(faq.index)">{{ faq.question }}</h3>
+              <button class="icon-button" 
+                      [attr.aria-label]="'Expand FAQ ' + faq.displayNumber"
+                      (click)="toggleFaq(faq.index)">
+                <img src="assets/plus-icon.svg" alt="Expand" class="icon">
+              </button>
+            </ng-container>
+            
+            <!-- Expanded state -->
+            <ng-container *ngIf="isFaqExpanded(faq.index)">
+              <div class="text-container-item">
+                <div class="question-container">
+                  <h3 class="question active">{{ faq.question }}</h3>
+                  <button class="icon-button" 
+                          [attr.aria-label]="'Collapse FAQ ' + faq.displayNumber"
+                          (click)="toggleFaq(faq.index)">
+                    <img src="assets/close-icon.svg" alt="Collapse" class="icon">
+                  </button>
+                </div>
+                <div class="answer-container" (click)="$event.stopPropagation()">
+                  <p class="answer">{{ faq.answer }}</p>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        
+        <div class="line-separator"></div>
+      </ng-container>
+    </div>
+
+    <!-- Vertical Separator -->
+    <div class="vertical-line"></div>
+
+    <!-- Right Column (Items 05-08) -->
+    <div class="items-container right-column">
+      <div class="line-separator"></div>
+      
+      <!-- Dynamic FAQ Items for Right Column -->
+      <ng-container *ngFor="let faq of rightColumnFaqs; let i = index; trackBy: trackByFaqId">
+        <div class="faq-item" 
+             [class.expanded]="isFaqExpanded(faq.index)"
+             [attr.aria-expanded]="isFaqExpanded(faq.index)"
+             role="button"
+             tabindex="0">
+          
+          <div class="number-container" [class.active]="isFaqExpanded(faq.index)">
+            <span class="number">{{ faq.displayNumber }}</span>
+          </div>
+          
+          <div class="content-container">
+            <!-- Collapsed state -->
+            <ng-container *ngIf="!isFaqExpanded(faq.index)">
+              <h3 class="question" (click)="toggleFaq(faq.index)">{{ faq.question }}</h3>
+              <button class="icon-button" 
+                      [attr.aria-label]="'Expand FAQ ' + faq.displayNumber"
+                      (click)="toggleFaq(faq.index)">
+                <img src="assets/plus-icon.svg" alt="Expand" class="icon">
+              </button>
+            </ng-container>
+            
+            <!-- Expanded state -->
+            <ng-container *ngIf="isFaqExpanded(faq.index)">
+              <div class="text-container-item">
+                <div class="question-container">
+                  <h3 class="question active">{{ faq.question }}</h3>
+                  <button class="icon-button" 
+                          [attr.aria-label]="'Collapse FAQ ' + faq.displayNumber"
+                          (click)="toggleFaq(faq.index)">
+                    <img src="assets/close-icon.svg" alt="Collapse" class="icon">
+                  </button>
+                </div>
+                <div class="answer-container" (click)="$event.stopPropagation()">
+                  <p class="answer">{{ faq.answer }}</p>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        
+        <div class="line-separator"></div>
+      </ng-container>
+    </div>
+  </div>
+</section>

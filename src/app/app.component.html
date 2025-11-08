@@ -1,0 +1,16 @@
+@if (showLoader()) {
+  <app-premium-loader (loadComplete)="onLoadComplete()"></app-premium-loader>
+}
+
+<div [class.content-visible]="!showLoader()" #mainContent>
+  <!-- Nexus Development Navbar Component -->
+  <app-navbar></app-navbar>
+
+  <!-- Main Content Area with Router Outlet -->
+  <main class="main-content">
+    <router-outlet />
+  </main>
+
+  <!-- Footer Section -->
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,88 @@
+<section class="hero-section" role="banner" aria-labelledby="hero-heading">
+  <div class="hero-container">
+    <div class="hero-sub-container">
+      <!-- 3D Rotating Cube Logo with Dynamic Offers -->
+      <div class="cube-container" aria-hidden="true">
+        <div class="cube-wrapper" [class.rotating]="isRotating">
+          <div class="cube">
+            <div class="cube-face front">
+              <div class="offer-content">
+                <span class="offer-title">{{ offers[0].title }}</span>
+                <span class="offer-subtitle">{{ offers[0].subtitle }}</span>
+              </div>
+            </div>
+            <div class="cube-face back">
+              <div class="offer-content">
+                <span class="offer-title">{{ offers[1].title }}</span>
+                <span class="offer-subtitle">{{ offers[1].subtitle }}</span>
+              </div>
+            </div>
+            <div class="cube-face right">
+              <div class="offer-content">
+                <span class="offer-title">{{ offers[2].title }}</span>
+                <span class="offer-subtitle">{{ offers[2].subtitle }}</span>
+              </div>
+            </div>
+            <div class="cube-face left">
+              <div class="offer-content">
+                <span class="offer-title">{{ offers[3].title }}</span>
+                <span class="offer-subtitle">{{ offers[3].subtitle }}</span>
+              </div>
+            </div>
+            <div class="cube-face top">
+              <div class="offer-content">
+                <span class="offer-title">{{ offers[4].title }}</span>
+                <span class="offer-subtitle">{{ offers[4].subtitle }}</span>
+              </div>
+            </div>
+            <div class="cube-face bottom">
+              <div class="offer-content">
+                <span class="offer-title">{{ offers[5].title }}</span>
+                <span class="offer-subtitle">{{ offers[5].subtitle }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 id="hero-heading" class="hero-heading">
+        A Digital Product Studio<br>
+        that will Work
+      </h1>
+
+      <!-- Segmented Text Container -->
+      <div class="segmented-container" role="group" aria-label="Target audience description">
+        <span 
+          *ngFor="let item of segmentedItems" 
+          [class]="item.isHighlighted ? 'segmented-text-highlighted' : 'segmented-text'"
+          [attr.aria-label]="item.isHighlighted ? 'Highlighted: ' + item.text : item.text">
+          {{ item.text }}
+        </span>
+      </div>
+    </div>
+
+    <!-- CTA Buttons Container -->
+    <div class="buttons-container">
+      <button 
+        type="button" 
+        class="btn btn-secondary" 
+        (click)="onOurWorksClick()"
+        aria-label="View our portfolio of work">
+        Our Services
+      </button>
+      <button 
+        type="button" 
+        class="btn btn-primary" 
+        (click)="onContactUsClick()"
+        aria-label="Get in touch with us">
+        Contact Us
+      </button>
+    </div>
+  </div>
+
+  <!-- Abstract Design Background -->
+  <div class="abstract-design" aria-hidden="true">
+    <img src="/assets/images/abstract-design.svg" alt="" class="abstract-image">
+  </div>
+</section>

@@ -1,0 +1,41 @@
+<nav class="navbar">
+  <div class="navbar__container">
+    <!-- Logo Section -->
+    <div class="navbar__logo" (click)="onLogoClick()">
+      <div class="navbar__logo-icon">
+        <img src="assets/logo.svg" alt="Nexus Development Logo" />
+      </div>
+      <div class="navbar__logo-text">
+        <div class="navbar__brand-name">NEXUS</div>
+        <div class="navbar__brand-tagline">Development</div>
+      </div>
+    </div>
+
+    <!-- Mobile toggle button -->
+    <button class="navbar__toggle" aria-label="Toggle navigation" aria-controls="navbar-menu" [attr.aria-expanded]="isMenuOpen" (click)="toggleMenu()">
+      <span class="navbar__toggle-bar"></span>
+      <span class="navbar__toggle-bar"></span>
+      <span class="navbar__toggle-bar"></span>
+    </button>
+
+    <!-- Navigation Links -->
+    <div id="navbar-menu" class="navbar__navigation" [class.nav-open]="isMenuOpen">
+      <div class="navbar__nav-item" 
+           *ngFor="let item of navigationItems" 
+           [class.navbar__nav-item--active]="item.active"
+           (click)="onNavigationClick(item); closeMenu()">
+        <span class="navbar__nav-text">{{ item.label }}</span>
+      </div>
+
+      <!-- Contact in mobile menu -->
+      <button class="navbar__contact-btn navbar__contact-btn--mobile" (click)="onContactClick(); closeMenu()">
+        <span class="navbar__contact-text">Contact Us</span>
+      </button>
+    </div>
+
+    <!-- Contact Button (desktop) -->
+    <button class="navbar__contact-btn navbar__contact-btn--desktop" (click)="onContactClick()">
+      <span class="navbar__contact-text">Contact Us</span>
+    </button>
+  </div>
+</nav>

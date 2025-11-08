@@ -1,0 +1,301 @@
+// Footer Section - Exact Figma Design
+.footer-section {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: #0a0a0a;
+  border-top: 1px solid #262626;
+  padding: 40px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media (max-width: 1024px) {
+    padding: 40px 40px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 30px 20px;
+    gap: 30px;
+  }
+
+  // Top Container
+  .footer-top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+
+    @media (max-width: 1024px) {
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  // Logo
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    width: 118.48px;
+    height: 40px;
+    flex-shrink: 0;
+
+    .logo-icon {
+      width: 40.19px;
+      height: 40px;
+      flex-shrink: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 5px;
+      }
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 92px;
+      height: 37px;
+      position: relative;
+      margin-left: 3px;
+
+      .logo-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 27px;
+        line-height: 0.84em;
+        color: #ffffff;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+      }
+
+      .logo-subtitle {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 0.84em;
+        color: #ffffff;
+        text-align: center;
+        margin-top: 1px;
+      }
+    }
+  }
+
+  // Navigation Links
+  .footer-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media (max-width: 1024px) {
+      position: static;
+      transform: none;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      gap: 16px;
+      width: 100%;
+    }
+
+    .nav-link {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5em;
+      color: #E6E6E6;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+
+      &:hover {
+        color: #9EFF00;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 15px;
+      }
+    }
+  }
+
+  // Stay Connected Box
+  .stay-connected-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 10px 10px 20px;
+    border: 1px solid #262626;
+    border-radius: 8px;
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      justify-content: space-between;
+      padding: 12px 16px;
+    }
+
+    .stay-connected-label {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5em;
+      color: #E6E6E6;
+      white-space: nowrap;
+
+      @media (max-width: 768px) {
+        font-size: 15px;
+      }
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+
+      .social-icon {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(180deg, #242424 0%, rgba(36, 36, 36, 0) 100%);
+        border: 1px solid transparent;
+        border-image: linear-gradient(180deg, #2E2E2E 0%, rgba(46, 46, 46, 0) 100%) 1;
+        border-radius: 8px;
+        color: #9EFF00;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        @media (max-width: 768px) {
+          width: 40px;
+          height: 40px;
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        &:hover {
+          background: linear-gradient(180deg, #9EFF00 0%, rgba(158, 255, 0, 0.8) 100%);
+          color: #0a0a0a;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(158, 255, 0, 0.3);
+        }
+      }
+    }
+  }
+
+  // Divider Line
+  .footer-divider {
+    width: 100%;
+    height: 1px;
+    background: #262626;
+  }
+
+  // Bottom Container
+  .footer-bottom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+    }
+  }
+
+  // Contact Info Container
+  .contact-info-container {
+    display: flex;
+    gap: 22px;
+
+    @media (max-width: 968px) {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #262626;
+
+      @media (max-width: 768px) {
+        padding-bottom: 14px;
+      }
+
+      .contact-icon {
+        width: 20px;
+        height: 20px;
+        color: #9EFF00;
+        flex-shrink: 0;
+
+        @media (max-width: 768px) {
+          width: 22px;
+          height: 22px;
+        }
+      }
+
+      .contact-text {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.5em;
+        color: #E6E6E6;
+        white-space: nowrap;
+
+        @media (max-width: 768px) {
+          font-size: 15px;
+          white-space: normal;
+        }
+      }
+
+      &:hover {
+        .contact-icon {
+          color: #b4ff33;
+        }
+
+        .contact-text {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  // Copyright Text
+  .copyright-text {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5em;
+    color: #98989A;
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

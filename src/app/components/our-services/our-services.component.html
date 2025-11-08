@@ -1,0 +1,114 @@
+<section class="our-services-section">
+  <!-- Hero Introduction -->
+  <div class="services-hero">
+    <div class="hero-background">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+    </div>
+    
+    <div class="hero-content">
+      <div class="service-badge">What We Offer</div>
+      <h2 class="hero-title">{{ sectionTitle }}</h2>
+      <p class="hero-subtitle">{{ sectionSubtitle }}</p>
+      
+    </div>
+  </div>
+
+  <!-- Interactive Services Showcase -->
+  <div class="services-showcase">
+    <div class="showcase-container">
+      <!-- Service Navigation -->
+      <div class="service-nav">
+        <button 
+          *ngFor="let service of services; let i = index"
+          class="nav-item"
+          [class.active]="activeServiceIndex === i"
+          (click)="setActiveService(i)"
+          [attr.aria-label]="'View ' + service.title + ' details'">
+          <div class="nav-icon">
+            <img [src]="service.iconPath" [alt]="service.iconAlt">
+          </div>
+          <div class="nav-content">
+            <h3 class="nav-title">{{ service.title }}</h3>
+            <p class="nav-subtitle">{{ service.shortDescription }}</p>
+          </div>
+          <div class="nav-indicator"></div>
+        </button>
+      </div>
+      
+      <!-- Active Service Details -->
+      <div class="service-details">
+        <div class="details-card" *ngFor="let service of services; let i = index" 
+             [class.active]="activeServiceIndex === i">
+          
+          <!-- Service Header -->
+          <div class="service-header">
+            <div class="service-icon-large">
+              <div class="icon-bg"></div>
+              <img [src]="service.iconPath" [alt]="service.iconAlt">
+            </div>
+            <div class="service-meta">
+              <h3 class="service-name">{{ service.title }}</h3>
+              <div class="service-tags">
+                <span class="tag" *ngFor="let tag of service.tags">{{ tag }}</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Service Description -->
+          <div class="service-description">
+            <p>{{ service.description }}</p>
+          </div>
+          
+          <!-- Service Features -->
+          <div class="service-features">
+            <h4 class="features-title">What's Included:</h4>
+            <ul class="features-list">
+              <li *ngFor="let feature of service.features" class="feature-item">
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span>{{ feature }}</span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Service Action -->
+          <div class="service-actions">
+            <button class="primary-btn" (click)="onGetStarted(service.title)">
+              <span>Get Started</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14m-7-7 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <!-- <button class="secondary-btn" (click)="onLearnMore(service.title)">
+              Learn More
+            </button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Process Timeline -->
+  <div class="process-section">
+    <div class="process-content">
+      <h3 class="process-title">Our Development Process</h3>
+      <div class="timeline">
+        <div class="timeline-item" *ngFor="let step of processSteps; let i = index" [attr.data-step]="i + 1">
+          <div class="timeline-marker">
+            <span class="step-number">{{ i + 1 }}</span>
+          </div>
+          <div class="timeline-content">
+            <h4 class="step-title">{{ step.title }}</h4>
+            <p class="step-description">{{ step.description }}</p>
+          </div>
+        </div>
+        <div class="timeline-line"></div>
+      </div>
+    </div>
+  </div>
+
+</section>

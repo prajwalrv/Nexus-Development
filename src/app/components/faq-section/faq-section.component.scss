@@ -1,0 +1,483 @@
+// Color variables based on Figma design
+$neon-green-50: #9EFF00;
+$neon-green-70: #C5FF66;
+$primary-green: #c7ff30;
+$absolute-white: #FFFFFF;
+$grey-90: #E6E6E6;
+$grey-15: #262626;
+$dark-background: #242424;
+
+.faq-section {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  // Hero area
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    gap: 10px;
+    padding: 100px 250px;
+    background: 
+      rgba(172, 255, 36, 0.2),
+      radial-gradient(circle, rgba(172, 255, 36, 0.1) 0%, transparent 70%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    .title {
+      font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 600;
+      font-size: 38px;
+      line-height: 1.2;
+      text-align: center;
+      color: $absolute-white;
+      margin: 0;
+      width: 100%;
+    }
+    
+    .subtitle {
+      font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.5;
+      letter-spacing: -0.6%;
+      text-align: center;
+      color: $grey-90;
+      margin: 0;
+      width: 100%;
+    }
+  }
+  
+  // Main FAQ container
+  .faq-container {
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+    border-top: 1px solid $grey-15;
+    
+    .items-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 60px 0;
+      
+      .line-separator {
+        width: 100%;
+        height: 1px;
+        background-color: $grey-15;
+      }
+      
+      .faq-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-self: stretch;
+        gap: 30px;
+        padding: 24px 40px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.02);
+        }
+        
+        .number-container {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          padding: 16px;
+          border-radius: 8px;
+          background: linear-gradient(180deg, rgba(36, 36, 36, 1) 0%, rgba(36, 36, 36, 0) 100%);
+          border: 1px solid transparent;
+          border-image: linear-gradient(180deg, rgba(46, 46, 46, 1) 0%, rgba(46, 46, 46, 0) 100%) 1;
+          min-width: 62px;
+          height: 62px;
+          align-items: center;
+          justify-content: center;
+          
+          &.active {
+            border: 1px solid $neon-green-50;
+            background: linear-gradient(180deg, rgba(36, 36, 36, 1) 0%, rgba(36, 36, 36, 0.8) 100%);
+          }
+          
+          .number {
+            font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 1.5;
+            text-align: center;
+            color: $absolute-white;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        
+        .number-container.active .number {
+          color: $neon-green-50;
+        }
+        
+        .content-container {
+          display: flex;
+          align-items: center;
+          flex: 1;
+          gap: 30px;
+        }
+        
+        .question {
+          font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 1.5;
+          text-align: left;
+          color: $absolute-white;
+          margin: 0;
+          flex: 1;
+          transition: color 0.3s ease;
+          
+          &.active {
+            color: $neon-green-70;
+            line-height: 1.2;
+          }
+        }
+        
+        .icon-button {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 4px;
+          width: 34px;
+          height: 34px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+          }
+          
+          &:focus {
+            outline: 2px solid $neon-green-50;
+            outline-offset: 2px;
+          }
+          
+          .icon {
+            width: 26px;
+            height: 26px;
+            transition: transform 0.3s ease;
+          }
+          
+          // Different styling for plus and close icons
+          img[src*="plus-icon"] {
+            filter: brightness(0) invert(1); // White plus icon
+          }
+          
+          img[src*="close-icon"] {
+            filter: none; // Keep original green color for close icon
+          }
+        }
+        
+        // Expanded FAQ item styling
+        &.expanded {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 30px 40px;
+          position: relative;
+          
+          // Position close button in top-right corner of card
+          .icon-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            margin: 0;
+          }
+          
+          .content-container {
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+          }
+          
+          .text-container-item {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 16px;
+            padding: 24px 0 0;
+            
+            .question-container {
+              display: flex;
+              flex-direction: row;
+              align-items: flex-start;
+              width: 100%;
+              padding-right: 50px; // Give space for the close button
+              
+              .question.active {
+                flex: 1;
+                margin: 0;
+              }
+            }
+            
+            .answer-container {
+              width: 100%;
+              overflow: hidden;
+              transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+              
+              .answer {
+                font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 1.5;
+                text-align: left;
+                color: $grey-90;
+                margin: 0;
+                padding: 0;
+                opacity: 1;
+                transform: translateY(0);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    .vertical-line {
+      width: 1px;
+      background-color: $grey-15;
+      align-self: stretch;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 1024px) {
+  .faq-section {
+    .text-container {
+      padding: 80px 100px;
+      
+      .title {
+        font-size: 32px;
+      }
+      
+      .subtitle {
+        font-size: 14px;
+      }
+    }
+    
+    .faq-container {
+      .items-container {
+        padding: 40px 0;
+        
+        .faq-item {
+          padding: 20px 30px;
+          gap: 20px;
+          
+          .question {
+            font-size: 16px;
+          }
+          
+          &.expanded {
+            gap: 20px;
+            
+            .text-container-item {
+              .answer {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-section {
+    .text-container {
+      padding: 60px 40px;
+      
+      .title {
+        font-size: 28px;
+      }
+      
+      .subtitle {
+        font-size: 14px;
+      }
+    }
+    
+    .faq-container {
+      flex-direction: column;
+      
+      .vertical-line {
+        display: none;
+      }
+      
+      .items-container {
+        padding: 30px 0;
+        
+        .faq-item {
+          padding: 16px 20px;
+          gap: 16px;
+          
+          .number-container {
+            min-width: 50px;
+            height: 50px;
+            padding: 12px;
+            
+            .number {
+              font-size: 20px;
+              width: 26px;
+              height: 26px;
+            }
+          }
+          
+          .content-container {
+            gap: 16px;
+          }
+          
+          .question {
+            font-size: 16px;
+          }
+          
+          .icon-button {
+            width: 28px;
+            height: 28px;
+            padding: 2px;
+            
+            .icon {
+              width: 20px;
+              height: 20px;
+            }
+          }
+          
+          &.expanded {
+            padding: 20px;
+            
+            // Position close button in top-right corner for tablet
+            .icon-button {
+              position: absolute;
+              top: 15px;
+              right: 15px;
+              z-index: 10;
+            }
+            
+            .content-container {
+              gap: 0;
+            }
+            
+            .text-container-item {
+              padding: 16px 0 0;
+              
+              .question-container {
+                gap: 16px;
+                padding-right: 45px; // Space for close button
+                
+                .question.active {
+                  margin: 0;
+                }
+              }
+              
+              .answer-container {
+                .answer {
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-section {
+    .text-container {
+      padding: 40px 20px;
+      
+      .title {
+        font-size: 24px;
+      }
+      
+      .subtitle {
+        font-size: 13px;
+      }
+    }
+    
+    .faq-container {
+      .items-container {
+        .faq-item {
+          padding: 12px 16px;
+          
+          .number-container {
+            min-width: 44px;
+            height: 44px;
+            padding: 10px;
+            
+            .number {
+              font-size: 18px;
+              width: 24px;
+              height: 24px;
+            }
+          }
+          
+          .question {
+            font-size: 15px;
+          }
+          
+          .icon-button {
+            width: 26px;
+            height: 26px;
+            
+            .icon {
+              width: 18px;
+              height: 18px;
+            }
+          }
+          
+          &.expanded {
+            padding: 16px;
+            
+            // Position close button in top-right corner for mobile
+            .icon-button {
+              position: absolute;
+              top: 12px;
+              right: 12px;
+              z-index: 10;
+            }
+            
+            .text-container-item {
+              padding: 12px 0 0;
+              
+              .question-container {
+                padding-right: 40px; // Space for close button
+                
+                .question.active {
+                  margin: 0;
+                }
+              }
+              
+              .answer-container {
+                .answer {
+                  font-size: 13px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<section class="trusted-partner-container" role="complementary" aria-label="Happy clients showcase">
+  <!-- Happy Clients Badge -->
+  <div class="trusted-badge" role="banner">
+    <span class="badge-text" aria-label="Happy clients showcase">
+      {{ partnerBadgeText }}
+    </span>
+  </div>
+
+  <!-- Clients Display -->
+  <div class="clients-display">
+    <!-- DhiWare Technologies -->
+    <div class="client-card" role="group" aria-labelledby="dhiware-name">
+      <div class="logo-container">
+        <img 
+          [src]="happyClients[0].logoPath" 
+          [alt]="happyClients[0].logoAlt"
+          class="logo-image"
+          role="img">
+      </div>
+      <div class="company-name-container">
+        <h3 id="dhiware-name" class="company-name">
+          {{ happyClients[0].name }}
+        </h3>
+      </div>
+    </div>
+
+    <!-- ElderlyAssist.AI -->
+    <div class="client-card" role="group" aria-labelledby="elderlyassist-name">
+      <div class="logo-container">
+        <div 
+          class="svg-logo"
+          [innerHTML]="getSanitizedSvg(happyClients[1].logoSvg!)"
+          [attr.aria-label]="happyClients[1].logoAlt"
+          role="img">
+        </div>
+      </div>
+      <div class="company-name-container">
+        <h3 id="elderlyassist-name" class="company-name">
+          {{ happyClients[1].name }}
+        </h3>
+      </div>
+    </div>
+  </div>
+</section>

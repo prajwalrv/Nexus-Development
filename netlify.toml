@@ -1,0 +1,97 @@
+[build]
+  command = "npm ci && npm run build"
+  publish = "dist/nexus-development/browser"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Content-Type = "image/svg+xml"
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[build.environment]
+  NODE_ENV = "production"
+  CI = "true"
+  NODE_VERSION = "18.19.1"
+  NPM_VERSION = "10.2.4"
+  ANGULAR_VERSION = "19"
+  NPM_CONFIG_PRODUCTION = "false"
+
+# Production context: all deploys from the Production branch set in your site's
+# deploy contexts will inherit these settings.
+[context.production]
+  command = "npm ci --include=dev && npm run build"
+
+[context.production.environment]
+  NODE_ENV = "production"
+
+# Deploy Preview context: all deploys generated from a pull/merge request will
+# inherit these settings.
+[context.deploy-preview]
+  command = "npm ci --include=dev && npm run build"
+
+# Specific branch context: all deploys from this specific branch will inherit
+# these settings.
+[context.develop]
+  command = "npm ci --include=dev && NODE_ENV=development npm run build"
+  environment = { NODE_ENV = "development" }
+
+# Handle Single Page Application routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+# Headers to ensure security and caching
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self' https: 'unsafe-inline' 'unsafe-eval' api.web3forms.com; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' api.web3forms.com;"
+    Cache-Control = "public, max-age=31536000"
+
+# Asset optimization
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.html]
+  pretty_urls = true
+[build.processing.images]
+  compress = true

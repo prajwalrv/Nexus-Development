@@ -1,0 +1,147 @@
+// Shared Page Styles
+.page-hero {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+  padding: 80px 0;
+  text-align: center;
+
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    .page-title {
+      font-family: 'Barlow', sans-serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 20px;
+      letter-spacing: -0.02em;
+
+      @media (max-width: 768px) {
+        font-size: 42px;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 32px;
+      }
+    }
+
+    .page-subtitle {
+      font-family: 'Barlow', sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: #a0a0a0;
+      margin: 0;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+
+      @media (max-width: 768px) {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.cta-section {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: linear-gradient(180deg, #111111 0%, #0a0a0a 100%);
+  padding: 80px 0;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 60px 0;
+  }
+
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    h2 {
+      font-family: 'Barlow', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 16px;
+
+      @media (max-width: 768px) {
+        font-size: 32px;
+      }
+    }
+
+    p {
+      font-family: 'Barlow', sans-serif;
+      font-size: 18px;
+      color: #a0a0a0;
+      margin: 0 0 32px;
+      line-height: 1.6;
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+
+    .cta-button {
+      display: inline-block;
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #0a0a0a;
+      background: linear-gradient(135deg, #9EFF00 0%, #8AE600 100%);
+      border: none;
+      border-radius: 10px;
+      padding: 18px 40px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(158, 255, 0, 0.3);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  }
+}
+
+.content-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+  }
+
+  h2 {
+    font-family: 'Barlow', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 24px;
+
+    @media (max-width: 768px) {
+      font-size: 28px;
+    }
+  }
+
+  p {
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    color: #a0a0a0;
+    line-height: 1.8;
+    margin: 0 0 20px;
+  }
+}

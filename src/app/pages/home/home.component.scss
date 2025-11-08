@@ -1,0 +1,103 @@
+// Home Component Animation Styles
+:host {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+// Section animation states
+:host ::ng-deep {
+  // Initial state for all sections
+  app-hero-section,
+  app-trusted-partner,
+  app-our-services,
+  app-why-choose-nexus,
+  app-client-testimonials,
+  app-faq-section {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(4px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity, filter;
+  }
+
+  // Animated state when in view
+  .animate-in-view {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  // Smooth scroll behavior enhancement
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+// Floating background elements for enhanced visual appeal
+.floating-bg-element {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0.03;
+  background: linear-gradient(45deg, #9EFF00, #ffffff);
+  filter: blur(40px);
+  z-index: -1;
+
+  &:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    right: 20%;
+  }
+
+  &:nth-child(2) {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    left: 10%;
+  }
+
+  &:nth-child(3) {
+    width: 400px;
+    height: 400px;
+    bottom: 20%;
+    right: 10%;
+  }
+}
+
+// Enhanced motion preferences
+@media (prefers-reduced-motion: reduce) {
+  :host ::ng-deep {
+    app-hero-section,
+    app-trusted-partner,
+    app-our-services,
+    app-why-choose-nexus,
+    app-client-testimonials,
+    app-faq-section {
+      transition: opacity 0.3s ease;
+      transform: none;
+      filter: none;
+    }
+  }
+
+  .floating-bg-element {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+// Performance optimizations
+:host ::ng-deep {
+  // GPU acceleration for smooth animations
+  app-hero-section,
+  app-trusted-partner,
+  app-our-services,
+  app-why-choose-nexus,
+  app-client-testimonials,
+  app-faq-section {
+    transform: translateZ(0); // Force hardware acceleration
+    backface-visibility: hidden;
+  }
+}
