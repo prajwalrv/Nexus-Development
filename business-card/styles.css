@@ -1,0 +1,64 @@
+/* Global */
+:root{
+  --bg:#0b0f13;
+  --bg2:#0e141a;
+  --accent:#00ff6a;
+  --accent2:#55ff8a;
+  --accent-dim:#143b27;
+  --text:#e8edf7;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:radial-gradient(1200px 500px at 70% -100px, rgba(0,255,106,.08), transparent 70%) #0a0f12;color:var(--text);font:400 16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+.page{min-height:100%;display:grid;place-items:center;gap:18px;padding:24px}
+.controls{display:flex;align-items:center;gap:12px}
+.btn{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#07130b;padding:10px 16px;border:0;border-radius:10px;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(0,255,106,.25)}
+.btn:hover{filter:brightness(1.05)}
+.hint{opacity:.8;font-size:12px}
+
+/* Card canvas: 1050x600 (=3.5x2 in @300DPI) */
+.card{position:relative;width:1050px;height:600px;border-radius:26px;overflow:hidden;color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 60% -200px, rgba(0,255,106,.12), transparent 60%),
+    linear-gradient(180deg, #0a1016 0%, #0a1016 42%, #0b0f13 42.1%, #0b0f13 100%);
+  box-shadow:0 24px 60px rgba(0,0,0,.7), inset 0 0 0 2px rgba(255,255,255,.04);
+}
+
+/* Decorative top swoosh */
+.top-swoosh{position:absolute;left:-10px;right:-10px;top:-140px;height:280px;border-bottom-left-radius:90% 70%;border-bottom-right-radius:90% 70%;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0));mix-blend-mode:screen;}
+
+/* Hex background */
+.hex{position:absolute;inset:0;opacity:.45}
+
+/* Circuit overlay */
+.circuit{position:absolute;inset:0;pointer-events:none}
+
+/* Neon badge */
+.badge{position:absolute;right:120px;top:84px;width:150px;height:100px;display:grid;place-items:center}
+.badge-inner{width:100%;height:100%;display:grid;place-items:center;border:2px solid var(--accent2);border-radius:12px;box-shadow:0 0 24px rgba(0,255,106,.6), inset 0 0 20px rgba(0,255,106,.25);background:linear-gradient(180deg,rgba(0,255,106,.08),rgba(0,255,106,0));}
+.badge-title{font-weight:900;letter-spacing:.8px;color:#cffff0}
+.badge-sub{font-size:12px;opacity:.9}
+
+/* Brand block */
+.brand{position:absolute;left:60px;top:170px;display:flex;align-items:center;gap:24px}
+.logo-wrap{width:84px;height:84px;border-radius:14px;display:grid;place-items:center;background:radial-gradient(120px 120px at 50% 30%, rgba(0,255,106,.25), rgba(0,255,106,.05));box-shadow:0 0 24px rgba(0,255,106,.4) inset, 0 10px 30px rgba(0,0,0,.6);border:1px solid var(--accent-dim)}
+.logo{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 6px 18px rgba(0,255,106,.35))}
+.brand-text{display:flex;flex-direction:column;gap:10px}
+.company{font-weight:800;letter-spacing:4px;font-size:46px}
+.company span{font-weight:700;opacity:.95}
+.slogan{font-size:14px;letter-spacing:.6px;opacity:.95}
+
+/* Contact block */
+.contact{position:absolute;right:70px;top:180px;display:flex;flex-direction:column;gap:10px;align-items:flex-start;text-align:left}
+.name{font-size:22px;font-weight:900;letter-spacing:1.4px}
+.title{opacity:.9;margin-top:-2px}
+.divider{width:100%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,255,106,.65),transparent);margin:12px 0}
+.line{display:flex;align-items:center;gap:10px;font-size:15px}
+.bullet{display:inline-flex;width:24px;height:24px;background:radial-gradient(circle at 30% 30%, var(--accent2), var(--accent));color:#062213;border-radius:50%;align-items:center;justify-content:center;font-weight:900;box-shadow:0 0 18px rgba(0,255,106,.7)}
+
+/* Corner accents (small PCB-like rounded squares) */
+.corner{position:absolute;width:16px;height:16px;border-radius:5px;border:2px solid rgba(0,255,106,.45);box-shadow:0 0 12px rgba(0,255,106,.4)}
+.corner.tl{left:22px;top:22px}
+.corner.tr{right:22px;top:22px}
+.corner.bl{left:22px;bottom:22px}
+.corner.br{right:22px;bottom:22px}

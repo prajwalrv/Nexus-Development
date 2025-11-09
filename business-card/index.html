@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nexus Development – Neon Business Card</title>
+    <meta name="description" content="NEXUS DEVELOPMENT business card – neon PCB style, export high‑quality PNG (3.5×2 in @300DPI)." />
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <!-- Controls -->
+      <div class="controls">
+        <button id="downloadBtn" class="btn">Download PNG</button>
+        <span class="hint">Canvas: 1050×600 px (3.5×2 in). Export uses 2× oversampling.</span>
+      </div>
+
+      <!-- Card (exact export target) -->
+      <div id="card" class="card" role="img" aria-label="NEXUS DEVELOPMENT business card">
+        <!-- Hex background overlay -->
+        <svg class="hex" viewBox="0 0 1050 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <pattern id="hexPattern" width="24" height="20.784" patternUnits="userSpaceOnUse" patternTransform="scale(1)">
+              <g fill="none" stroke="#1b2a1f" stroke-width="1">
+                <path d="M6 0l6 3.464L6 6.928L0 3.464Z" transform="translate(0 0)"/>
+              </g>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hexPattern)" opacity="0.6" />
+        </svg>
+
+        <!-- Background circuit pattern (neon green) -->
+        <svg class="circuit" viewBox="0 0 1050 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <filter id="glowG" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="b" />
+              <feMerge>
+                <feMergeNode in="b"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <linearGradient id="gradG" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#55ff8a" />
+              <stop offset="100%" stop-color="#00ff6a" />
+            </linearGradient>
+          </defs>
+          <g stroke="url(#gradG)" stroke-width="3" fill="none" filter="url(#glowG)" opacity="0.95">
+            <!-- Top traces -->
+            <path d="M40 70h220v40h100v30h160"/>
+            <path d="M360 70h130v60h200"/>
+            <path d="M710 60h120v60h180"/>
+            <path d="M80 120h150v40h80v30h120"/>
+            <!-- Bottom traces -->
+            <path d="M60 530h240v-40h120v-40h120"/>
+            <path d="M360 520h160v-50h140"/>
+            <path d="M730 520h160v-60h120"/>
+            <path d="M120 470h180v-30h90v-40h120"/>
+            <!-- Vias -->
+            <g fill="#6bff95" stroke="none" opacity="0.95">
+              <circle cx="260" cy="110" r="4"/>
+              <circle cx="420" cy="170" r="4"/>
+              <circle cx="860" cy="120" r="4"/>
+              <circle cx="300" cy="490" r="4"/>
+              <circle cx="540" cy="450" r="4"/>
+              <circle cx="900" cy="470" r="4"/>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Neon badge -->
+        <div class="badge">
+          <div class="badge-inner">
+            <div class="badge-title">FREE</div>
+            <div class="badge-sub">Consultation</div>
+          </div>
+        </div>
+
+        <!-- Left: Logo + Company -->
+        <div class="brand">
+          <div class="logo-wrap">
+            <img src="../src/assets/logo.svg" onerror="this.src='assets/logo.svg'" alt="Nexus Development logo" class="logo" />
+          </div>
+          <div class="brand-text">
+            <div class="company">NEXUS <span>DEVELOPMENT</span></div>
+            <div class="slogan">Elevate Your Digital Presence.</div>
+          </div>
+        </div>
+
+        <!-- Right: Contact -->
+        <div class="contact">
+          <div class="name">PRAJWAL R V</div>
+          <div class="title">Founder, CEO &amp; CTO</div>
+          <div class="divider"></div>
+          <div class="line"><span class="bullet">✓</span> Projects Delivered: 2</div>
+          <div class="line"><span class="bullet">✉</span> contactus@nexusdevelopment.in</div>
+          <div class="line"><span class="bullet">🌐</span> www.nexusdevelopment.com</div>
+        </div>
+
+        <!-- Corner accents -->
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js" integrity="sha384-ZK0H1kK6hCwS8C1cW2z3Yh4vQqzK8Gq9s0S5K2m4W1uY8J2Zx3v2yJvQkKQ0fR3j" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

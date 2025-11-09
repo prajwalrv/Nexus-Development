@@ -1,0 +1,44 @@
+<div class="pricing-page">
+  <section class="page-hero">
+    <div class="hero-content">
+      <h1 class="page-title">Transparent Pricing</h1>
+      <p class="page-subtitle">Built to match your stage — from local presence to enterprise scale</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="pricing-grid">
+      <div class="pricing-card" *ngFor="let plan of plans" [class.pricing-card--highlight]="plan.highlight">
+        <div class="pricing-card__header">
+          <span class="pricing-card__badge" *ngIf="plan.highlight">Recommended</span>
+          <h3 class="pricing-card__title">{{ plan.name }}</h3>
+          <div class="pricing-card__price">{{ plan.price }}</div>
+          <div class="pricing-card__blurb" *ngIf="plan.blurb">{{ plan.blurb }}</div>
+        </div>
+
+        <ul class="pricing-card__features">
+          <li class="feature" *ngFor="let feature of plan.features">
+            <span class="feature__icon" aria-hidden="true">✓</span>
+            <span class="feature__text">{{ feature }}</span>
+          </li>
+        </ul>
+
+        <div class="pricing-card__actions">
+          <a class="cta-button" [routerLink]="plan.cta.route">{{ plan.cta.label }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes">
+      <p>All pricing is in USD. Final scope may adjust after a quick discovery call. Hosting, third‑party tools, and premium integrations are billed at cost.</p>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Not sure which plan fits?</h2>
+      <p>Book a 15‑minute call — we’ll map the fastest path to results for your business.</p>
+      <a routerLink="/contact" class="cta-button">Book a Call</a>
+    </div>
+  </section>
+</div>

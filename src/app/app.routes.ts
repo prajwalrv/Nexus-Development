@@ -6,6 +6,7 @@ import { ProcessComponent } from './pages/process/process.component';
 import { AboutComponent } from './pages/about/about.component';
 import { CareersComponent } from './pages/careers/careers.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { PricingComponent } from './pages/pricing/pricing.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,11 @@ export const routes: Routes = [
     path: 'careers',
     component: CareersComponent,
     title: 'Careers - Nexus Development'
+  },
+  {
+    path: 'pricing',
+    component: PricingComponent,
+    title: 'Pricing - Nexus Development'
   },
   {
     path: 'contact',

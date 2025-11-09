@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
     { label: 'Services', route: '/services', active: false },
     { label: 'Work', route: '/work', active: false },
     { label: 'Process', route: '/process', active: false },
+    { label: 'Pricing', route: '/pricing', active: false },
     { label: 'About', route: '/about', active: false },
     { label: 'Careers', route: '/careers', active: false }
   ];

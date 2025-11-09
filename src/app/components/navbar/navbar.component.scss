@@ -24,6 +24,7 @@ $background: #1A1A1A;     // Grey/10 (implied dark background)
   &__container {
     display: flex;
     align-items: center;
+    gap: 24px;
     padding: 20px 80px;
     max-width: 1440px;
     margin: 0 auto;
@@ -147,10 +148,10 @@ $background: #1A1A1A;     // Grey/10 (implied dark background)
   &__navigation {
     display: flex;
     align-items: center;
+    justify-content: center; // center the items on desktop/tablet
     gap: 32px; // more spacing between items to prevent overlap
     position: static; // keep in normal flow for responsiveness
     flex: 1 1 auto; // allow the nav to grow/shrink between logo and CTA
-    justify-content: center; // center the items on desktop/tablet
     margin: 0 24px; // breathing room from logo/CTA
     min-width: 0; // avoid overflow in flex layouts
   }

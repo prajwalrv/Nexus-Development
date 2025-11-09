@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Placeholder logo. Replace this file with your official SVG logo from the website to use it on the card. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff9b31"/>
+      <stop offset="100%" stop-color="#ff6a00"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="24" fill="#0f1525"/>
+  <g transform="translate(32,28)" fill="url(#g)">
+    <path d="M48 164L0 120V20L48 64v100z"/>
+    <path d="M80 136l48 44V80L80 36v100z"/>
+    <path d="M192 64l-48-44v100l48 44V64z"/>
+  </g>
+</svg>
