@@ -6,12 +6,10 @@ $white: #FFFFFF;          // Absolute/White
 $background: #1A1A1A;     // Grey/10 (implied dark background)
 
 .navbar {
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: $background; // Using the defined background color variable
   width: 100%;
   box-sizing: border-box;
-  border-bottom: 1px solid rgba(38, 38, 38, 0.3);
+  border-bottom: 1px solid rgba(38, 38, 38, 1);
   /* Use sticky positioning so the navbar stays in document flow
     and becomes fixed at the top when scrolled into view. This
     prevents the navbar from overlapping content (unlike fixed). */

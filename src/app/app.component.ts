@@ -24,18 +24,20 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      // Scroll to top on route change
-      window.scrollTo(0, 0);
-      
       // Reset GSAP ScrollTrigger on route change
       if ('ScrollTrigger' in window) {
         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       }
 
-      // Trigger page entrance animations
-      setTimeout(() => {
-        this.animatePageEntrance();
-      }, 100);
+      // Ensure scroll reset happens after view update and before animations
+      Promise.resolve().then(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        
+        // Trigger page entrance animations
+        setTimeout(() => {
+          this.animatePageEntrance();
+        }, 100);
+      });
     });
   }
 

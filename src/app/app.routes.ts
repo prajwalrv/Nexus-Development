@@ -1,6 +1,12 @@
-import { Routes } from '@angular/router';
+import { Routes, ExtraOptions } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ServicesComponent } from './pages/services/services.component';
+
+// Set default scroll behavior for all routes
+export const routerOptions: ExtraOptions = {
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled'
+};
 import { WorkComponent } from './pages/work/work.component';
 import { ProcessComponent } from './pages/process/process.component';
 import { AboutComponent } from './pages/about/about.component';
