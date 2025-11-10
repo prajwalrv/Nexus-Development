@@ -1,0 +1,219 @@
+# Nexus Development - Unified Deployment Configuration
+# This file supports multiple deployment platforms for easy one-go deployment
+
+[project]
+name = "nexus-development"
+description = "Nexus Development - Web Services Company"
+version = "1.0.0"
+author = "Nexus Development PVT LTD"
+repository = "https://github.com/nexus-developmentpvtltd/Nexus-Development.git"
+
+# ============================================================================
+# NETLIFY CONFIGURATION
+# ============================================================================
+[netlify]
+build_command = "npm ci && npm run build"
+publish_directory = "dist/nexus-development/browser"
+node_version = "18.19.1"
+npm_version = "10.2.4"
+
+[netlify.environment]
+NODE_ENV = "production"
+CI = "true"
+ANGULAR_VERSION = "19"
+NPM_CONFIG_PRODUCTION = "false"
+
+# Security Headers
+[[netlify.headers]]
+path = "/*"
+headers = [
+  { "X-Frame-Options" = "DENY" },
+  { "X-XSS-Protection" = "1; mode=block" },
+  { "X-Content-Type-Options" = "nosniff" },
+  { "Referrer-Policy" = "strict-origin-when-cross-origin" },
+  { "Content-Security-Policy" = "default-src 'self' https: 'unsafe-inline' 'unsafe-eval' api.web3forms.com; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' api.web3forms.com;" }
+]
+
+# Asset Caching
+[[netlify.headers]]
+path = "/*.js"
+headers = [
+  { "Content-Type" = "application/javascript; charset=utf-8" },
+  { "Cache-Control" = "public, max-age=31536000, immutable" }
+]
+
+[[netlify.headers]]
+path = "/*.css"
+headers = [
+  { "Content-Type" = "text/css; charset=utf-8" },
+  { "Cache-Control" = "public, max-age=31536000, immutable" }
+]
+
+[[netlify.headers]]
+path = "/*.svg"
+headers = [
+  { "Content-Type" = "image/svg+xml" },
+  { "Cache-Control" = "public, max-age=31536000, immutable" }
+]
+
+[[netlify.headers]]
+path = "/*.{jpg,png,gif,webp}"
+headers = [
+  { "Cache-Control" = "public, max-age=31536000, immutable" }
+]
+
+# SPA Redirects
+[[netlify.redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+force = true
+
+[netlify.production]
+command = "npm ci --include=dev && npm run build"
+environment = { NODE_ENV = "production" }
+
+[netlify.preview]
+command = "npm ci --include=dev && npm run build"
+
+[netlify.develop]
+command = "npm ci --include=dev && NODE_ENV=development npm run build"
+environment = { NODE_ENV = "development" }
+
+# ============================================================================
+# VERCEL CONFIGURATION
+# ============================================================================
+[vercel]
+framework = "angular"
+build_command = "npm ci && npm run build"
+output_directory = "dist/nexus-development/browser"
+node_version = "18.19.1"
+install_command = "npm ci"
+
+[vercel.environment]
+NODE_ENV = "production"
+ANGULAR_VERSION = "19"
+
+[vercel.env_production]
+NODE_ENV = "production"
+
+[vercel.env_preview]
+NODE_ENV = "preview"
+
+[vercel.env_development]
+NODE_ENV = "development"
+
+# ============================================================================
+# RAILWAY CONFIGURATION
+# ============================================================================
+[railway]
+app_name = "nexus-development"
+runtime = "nodejs"
+node_version = "18.19.1"
+start_command = "npm ci && npm run build && npx serve -s dist/nexus-development/browser -l 8080"
+build_command = "npm ci && npm run build"
+
+[railway.environment]
+NODE_ENV = "production"
+PORT = "8080"
+ANGULAR_VERSION = "19"
+
+# ============================================================================
+# RENDER CONFIGURATION
+# ============================================================================
+[render]
+service_name = "nexus-development"
+runtime = "node"
+node_version = "18.19.1"
+build_command = "npm ci && npm run build"
+start_command = "npm ci -g serve && serve -s dist/nexus-development/browser -l 8080"
+
+[render.environment]
+NODE_ENV = "production"
+PORT = "8080"
+ANGULAR_VERSION = "19"
+
+# ============================================================================
+# DOCKER CONFIGURATION
+# ============================================================================
+[docker]
+base_image = "node:18.19.1-alpine"
+build_stage = "builder"
+runtime_stage = "runtime"
+expose_port = 80
+nginx_port = 80
+
+[docker.build_args]
+NODE_ENV = "production"
+ANGULAR_VERSION = "19"
+
+# ============================================================================
+# BUILD CONFIGURATION
+# ============================================================================
+[build]
+command = "npm ci && npm run build"
+output_directory = "dist/nexus-development/browser"
+cache_directories = [
+  "node_modules",
+  ".angular"
+]
+
+[build.environment]
+NODE_ENV = "production"
+CI = "true"
+ANGULAR_VERSION = "19"
+NPM_CONFIG_PRODUCTION = "false"
+
+# ============================================================================
+# DEPLOYMENT OPTIONS
+# ============================================================================
+[deployment]
+# Automatic deployments
+auto_deploy = true
+branch = "main"
+production_branch = "main"
+preview_branches = ["develop", "staging"]
+
+# Deployment timeouts (in seconds)
+build_timeout = 1800
+deploy_timeout = 300
+
+# Notifications
+notifications_enabled = true
+notification_channels = ["github"]
+
+# ============================================================================
+# POST-DEPLOYMENT CHECKS
+# ============================================================================
+[health_checks]
+enabled = true
+endpoint = "/"
+expected_status = 200
+timeout = 30
+
+# ============================================================================
+# OPTIMIZATION & PERFORMANCE
+# ============================================================================
+[optimization]
+bundle_analysis = true
+minify_html = true
+minify_css = true
+minify_javascript = true
+compress_images = true
+enable_gzip = true
+
+# ============================================================================
+# ROLLBACK CONFIGURATION
+# ============================================================================
+[rollback]
+auto_rollback_on_failure = true
+keep_last_deployments = 5
+
+# ============================================================================
+# DEPLOYMENT SCRIPTS
+# ============================================================================
+[scripts]
+prebuild = ["npm audit", "npm run lint"]
+postbuild = ["npm run test"]
+predeploy = ["npm run build"]
+postdeploy = ["curl http://localhost/"]
