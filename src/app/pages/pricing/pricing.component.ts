@@ -5,6 +5,8 @@ import { RouterLink } from '@angular/router';
 interface Plan {
   name: string;
   price: string;
+  originalPrice?: string;
+  discountedPrice?: string;
   blurb?: string;
   cta: { label: string; route: string };
   features: string[];
@@ -33,7 +35,9 @@ export class PricingComponent {
     },
     {
       name: 'Local Business Website',
-      price: '$3,000',
+      price: '$2,000',
+      originalPrice: '$2,000',
+      discountedPrice: '$1,600',
       blurb: 'Everything you need to get online fast and look professional',
       cta: { label: 'Get Started', route: '/contact' },
       highlight: true,
@@ -50,6 +54,8 @@ export class PricingComponent {
     {
       name: 'Enterprise Business',
       price: 'Starting at $25,000',
+      originalPrice: 'Starting at $25,000',
+      discountedPrice: 'Starting at $20,000',
       blurb: 'Strategy, custom UX/UI, integrations, security, and scale',
       cta: { label: 'Book a Discovery Call', route: '/contact' },
       features: [
@@ -67,6 +73,8 @@ export class PricingComponent {
     {
       name: 'E‑commerce & Online Ordering',
       price: 'From $7,500',
+      originalPrice: 'From $7,500',
+      discountedPrice: 'From $6,000',
       blurb: 'Sell online with a streamlined storefront and ordering flow',
       cta: { label: 'Launch My Store', route: '/contact' },
       features: [

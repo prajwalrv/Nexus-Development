@@ -24,7 +24,7 @@
           </div>
           <div class="method-details">
             <span class="method-label">Email</span>
-            <span class="method-value">instantdeliverables&#64;gmail.com</span>
+            <span class="method-value">contactus&#64;nexusdevelopment.in</span>
           </div>
         </div>
 
@@ -85,7 +85,7 @@
               id="email" 
               name="email"
               formControlName="email"
-              placeholder="instantdeliverables&#64;gmail.com"
+              placeholder="contactus&#64;nexusdevelopment.in"
             />
             <span *ngIf="email?.invalid && email?.touched" class="error-message">
               Please enter a valid email
@@ -118,20 +118,20 @@
         <div class="form-field">
           <label>Project Budget</label>
           <div class="budget-section">
-            <div class="budget-display">₹{{ formatBudget(budgetValue) }}</div>
+            <div class="budget-display">{{ formatBudget(budgetValue) }}</div>
             <input 
               type="range" 
               name="budget"
-              min="50000" 
-              max="2500000" 
-              step="10000"
+              min="1000" 
+              max="100000" 
+              step="1000"
               [value]="budgetValue"
               (input)="onBudgetChange($event)"
               class="budget-slider"
             />
             <div class="budget-labels">
-              <span>₹50K</span>
-              <span>₹25L</span>
+              <span>$1K</span>
+              <span>$100K</span>
             </div>
           </div>
         </div>

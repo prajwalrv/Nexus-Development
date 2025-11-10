@@ -20,12 +20,12 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
 
   // Dynamic offers displayed on cube faces
   offers: Offer[] = [
-    { title: '20% OFF', subtitle: 'Until Dec 31' },
-    { title: 'FREE Consultation', subtitle: 'This Week Only' },
-    { title: 'NEW YEAR OFFER', subtitle: '30% Discount' },
-    { title: 'EARLY BIRD', subtitle: 'Save 25%' },
-    { title: 'FLASH SALE', subtitle: 'Limited Time' },
-    { title: 'SPECIAL PROMO', subtitle: 'Contact Now' }
+    { title: '🎉 Get 20% OFF', subtitle: 'on all pricing plans' },
+    { title: 'FREE Consultation', subtitle: 'till Jan 1st!' },
+    { title: '🎉 Get 20% OFF', subtitle: 'on all pricing plans' },
+    { title: 'FREE Consultation', subtitle: 'till Jan 1st!' },
+    { title: '🎉 Get 20% OFF', subtitle: 'on all pricing plans' },
+    { title: 'FREE Consultation', subtitle: 'till Jan 1st!' }
   ];
 
   constructor(private router: Router) {}

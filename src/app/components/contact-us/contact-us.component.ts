@@ -18,7 +18,7 @@ interface Service {
 })
 export class ContactUsComponent implements OnInit {
   contactForm!: FormGroup;
-  budgetValue: number = 500000;
+  budgetValue: number = 15000;
 
   services: Service[] = [
     { id: 'web', label: 'Web Development', selected: false },
@@ -72,20 +72,13 @@ export class ContactUsComponent implements OnInit {
   }
 
   formatBudget(value: number): string {
-    if (value >= 10000000) {
-      const crores = value / 10000000;
-      return crores % 1 === 0 
-        ? `${crores.toFixed(0)} Cr` 
-        : `${crores.toFixed(2)} Cr`;
-    } else if (value >= 100000) {
-      const lakhs = value / 100000;
-      return lakhs % 1 === 0 
-        ? `${lakhs.toFixed(0)} L` 
-        : `${lakhs.toFixed(2)} L`;
-    } else if (value >= 1000) {
-      return `${(value / 1000).toFixed(0)} K`;
+    if (value >= 1000) {
+      const thousands = value / 1000;
+      return thousands % 1 === 0 
+        ? `$${thousands.toFixed(0)}K` 
+        : `$${thousands.toFixed(1)}K`;
     }
-    return value.toString();
+    return `$${value}`;
   }
 
   async onSubmit(): Promise<void> {
@@ -118,7 +111,7 @@ export class ContactUsComponent implements OnInit {
           // Reset services
           this.services.forEach(service => service.selected = false);
           // Reset budget
-          this.budgetValue = 500000;
+          this.budgetValue = 15000;
           this.toastr.success(
             'We will get back to you soon!',
             'Thank you for contacting Nexus Development Pvt Ltd',
@@ -146,7 +139,7 @@ export class ContactUsComponent implements OnInit {
       }
       this.contactForm.reset();
       this.services.forEach(s => s.selected = false);
-      this.budgetValue = 500000;
+      this.budgetValue = 15000;
     }
   }
 }

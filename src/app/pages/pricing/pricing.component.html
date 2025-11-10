@@ -12,7 +12,18 @@
         <div class="pricing-card__header">
           <span class="pricing-card__badge" *ngIf="plan.highlight">Recommended</span>
           <h3 class="pricing-card__title">{{ plan.name }}</h3>
-          <div class="pricing-card__price">{{ plan.price }}</div>
+          <div class="pricing-card__price">
+            <ng-container *ngIf="plan.originalPrice && plan.discountedPrice">
+              <div class="price-container">
+                <div class="original-price">{{ plan.originalPrice }}</div>
+                <div class="discount-label">20% OFF</div>
+                <div class="discounted-price">{{ plan.discountedPrice }}</div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="!plan.originalPrice || !plan.discountedPrice">
+              <div class="single-price">{{ plan.price }}</div>
+            </ng-container>
+          </div>
           <div class="pricing-card__blurb" *ngIf="plan.blurb">{{ plan.blurb }}</div>
         </div>
 
